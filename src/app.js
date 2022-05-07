@@ -128,7 +128,7 @@ class Keyboard {
     if (element === null) return;
 
     /* КОСТЫЛЬ!!! */
-    const keyProgr = ['Backspace', 'Enter'];
+    const keyProgr = ['Backspace', 'Tab', 'CapsLock', 'Enter', 'ShiftLeft', 'ShiftRight', 'ControlLeft', 'ControlRight', 'AltLeft', 'Space', 'AltRight', 'ArrowLeft', 'ArrowUp', 'ArrowDown', 'ArrowRight', 'changeLang'];
     for (let i = 0; i < keyProgr.length; i += 1) {
       if (element.classList.contains(keyProgr[i])) return;
     }
@@ -152,6 +152,22 @@ class Keyboard {
 
     const textarea = document.querySelector('.textarea');
     textarea.value += '\n';
+  }
+
+  static addHorizontalIndent(event) {
+    const element = event.target.closest('.Tab');
+    if (!element) return;
+
+    const textarea = document.querySelector('.textarea');
+    textarea.value += '    ';
+  }
+
+  static addSpace(event) {
+    const element = event.target.closest('.Space');
+    if (!element) return;
+
+    const textarea = document.querySelector('.textarea');
+    textarea.value += ' ';
   }
 
   static removeSymbolText(event) {
@@ -212,5 +228,7 @@ changeLang.addEventListener('click', keyboard.toggleLang.bind(keyboard));
 keyboard.main.addEventListener('mousedown', Keyboard.addActiveClass);
 keyboard.main.addEventListener('mouseup', Keyboard.removeActiveClass);
 keyboard.main.addEventListener('mousedown', Keyboard.addParagraph);
+keyboard.main.addEventListener('mousedown', Keyboard.addHorizontalIndent);
+keyboard.main.addEventListener('mousedown', Keyboard.addSpace);
 keyboard.main.addEventListener('mousedown', Keyboard.removeSymbolText);
 keyboard.main.addEventListener('mousedown', keyboard.addLetterToTextarea.bind(keyboard));
