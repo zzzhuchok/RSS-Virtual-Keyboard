@@ -145,6 +145,14 @@ class Keyboard {
     const textarea = document.querySelector('.textarea');
     textarea.value += keyInner;
   }
+
+  static addParagraph(event) {
+    const element = event.target.closest('.Enter');
+    if (!element) return;
+
+    const textarea = document.querySelector('.textarea');
+    textarea.value += '\n';
+  }
 }
 
 /* ------------------------------------------------------------------------- */
