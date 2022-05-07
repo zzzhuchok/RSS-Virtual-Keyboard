@@ -50,4 +50,75 @@ const keysData = {
   ],
 };
 
+function getElement(tag, classSel, inner = '') {
+  const el = document.createElement(tag);
+  el.classList = classSel;
+  el.innerHTML = inner;
+  return el;
+}
+
 /* ---------------------------------------------------------------------------------------------- */
+
+class Keyboard {
+  constructor() {
+    this.main = null;
+    this.keys = keysData;
+
+    this.lang = 'en';
+    this.caps = false;
+    this.shift = false;
+  }
+
+  init() {
+    this.main = document.createElement('div');
+    this.main.classList = 'keyboard';
+    this.main.setAttribute('id', 'keyboard');
+
+    const container = document.querySelector('.container');
+    container.appendChild(this.main);
+  }
+
+  initKeys() {
+    const fragment = document.createDocumentFragment();
+
+    for (let i = 0; i < 5; i += 1) {
+      const row = document.createElement('div');
+      row.classList = 'row';
+      this.main.appendChild(row);
+
+      for (let j = 0; j < this.keys.keyEn[i].length; j += 1) {
+        const btn = document.createElement('div');
+        const keyEn = `<span class = "en"><span class = "normal">${this.keys.keyEn[i][j]}</span><span class = "shift hidden">${this.keys.keyEnUp[i][j]}</span><span class = "caps hidden">${this.keys.keyEnCaps[i][j]}</span></span>`;
+        const keyRu = `<span class = "ru hidden"><span class = "normal">${this.keys.keyRu[i][j]}</span><span class = "shift hidden">${this.keys.keyRuUp[i][j]}</span><span class = "caps hidden">${this.keys.keyRuCaps[i][j]}</span></span>`;
+        btn.classList = `key ${this.keys.keyCodes[i][j]}`;
+
+        btn.insertAdjacentHTML('beforeend', keyEn);
+        btn.insertAdjacentHTML('beforeend', keyRu);
+
+        row.appendChild(btn);
+      }
+      fragment.appendChild(row);
+    }
+    this.main.appendChild(fragment);
+  }
+}
+
+/* ------------------------------------------------------------------------- */
+
+const titleHeader = 'RSS Virtual Keyboard';
+// const descriptionOS = 'Windows';
+// const descriptionOSKey = 'ctrl + alt';
+
+const { body } = document;
+
+const container = getElement('div', 'container');
+const title = getElement('h1', 'title title-h1', titleHeader);
+const textarea = getElement('textarea', 'textarea', '');
+
+body.prepend(container);
+container.append(title);
+container.append(textarea);
+
+const keyboard = new Keyboard();
+keyboard.init();
+keyboard.initKeys();
