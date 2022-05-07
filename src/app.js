@@ -172,15 +172,51 @@ class Keyboard {
 
     if (!this.caps) {
       this.caps = true;
+      keyNormalColl.forEach((item) => {
+        item.classList.add('hidden');
+      });
+
+      keyCapsColl.forEach((item) => {
+        item.classList.remove('hidden');
+      });
     } else {
       this.caps = false;
+      keyNormalColl.forEach((item) => {
+        item.classList.remove('hidden');
+      });
+
+      keyCapsColl.forEach((item) => {
+        item.classList.add('hidden');
+      });
     }
+  }
+
+  onShift() {
+    const keyNormalColl = this.main.querySelectorAll(`.${this.lang} .normal`);
+    const keyShiftColl = this.main.querySelectorAll(`.${this.lang} .shift`);
+
+    this.shift = true;
 
     keyNormalColl.forEach((item) => {
       item.classList.toggle('hidden');
     });
 
-    keyCapsColl.forEach((item) => {
+    keyShiftColl.forEach((item) => {
+      item.classList.toggle('hidden');
+    });
+  }
+
+  offShift() {
+    const keyNormalColl = this.main.querySelectorAll(`.${this.lang} .normal`);
+    const keyShiftColl = this.main.querySelectorAll(`.${this.lang} .shift`);
+
+    this.shift = false;
+
+    keyNormalColl.forEach((item) => {
+      item.classList.toggle('hidden');
+    });
+
+    keyShiftColl.forEach((item) => {
       item.classList.toggle('hidden');
     });
   }
@@ -222,6 +258,18 @@ class Keyboard {
       elementsActive[i].classList.remove('active');
     }
   }
+
+  // static onFocus() {
+  //   const textarea = document.querySelector('.textarea');
+  //   textarea.focus();
+  //   // console.dir(textarea.selectionStart);
+  // }
+
+  // getPosCursor() {
+  //   const textarea = document.querySelector('.textarea');
+  //   this.posCursor = textarea.selectionStart;
+  //   // console.log(this.posCursor);
+  // }
 }
 
 /* ------------------------------------------------------------------------- */
@@ -254,6 +302,7 @@ changeLang.addEventListener('click', keyboard.toggleLang.bind(keyboard));
 /* Добавление буквы в textarea */
 keyboard.main.addEventListener('mousedown', Keyboard.addActiveClass);
 keyboard.main.addEventListener('mouseup', Keyboard.removeActiveClass);
+
 keyboard.main.addEventListener('mousedown', keyboard.addLetterToTextarea.bind(keyboard));
 
 const enter = document.querySelector('.Enter');
@@ -261,9 +310,16 @@ const space = document.querySelector('.Space');
 const tab = document.querySelector('.Tab');
 const backspace = document.querySelector('.Backspace');
 const capslock = document.querySelector('.CapsLock');
+const shift = document.querySelector('.ShiftLeft');
 
 enter.addEventListener('mousedown', Keyboard.addParagraph);
 space.addEventListener('mousedown', Keyboard.addSpace);
 tab.addEventListener('mousedown', Keyboard.addHorizontalIndent);
 backspace.addEventListener('mousedown', Keyboard.removeSymbolText);
 capslock.addEventListener('click', keyboard.onCapsLock.bind(keyboard));
+shift.addEventListener('mousedown', keyboard.onShift.bind(keyboard));
+shift.addEventListener('mouseup', keyboard.onShift.bind(keyboard));
+
+// textarea.addEventListener('blur', Keyboard.onFocus);
+// textarea.addEventListener('click', keyboard.getPosCursor.bind(keyboard));
+// keyboard.main.addEventListener('click', Keyboard.onFocus);
