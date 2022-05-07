@@ -170,10 +170,14 @@ class Keyboard {
   }
 
   static removeActiveClass(event) {
-    const element = event.target.closest('.key');
+    const element = event.target.closest('.keyboard');
 
     if (!element) return;
-    element.classList.remove('active');
+    const elementsActive = element.querySelectorAll('.key.active');
+
+    for (let i = 0; i < elementsActive.length; i += 1) {
+      elementsActive[i].classList.remove('active');
+    }
   }
 }
 
@@ -207,6 +211,6 @@ changeLang.addEventListener('click', keyboard.toggleLang.bind(keyboard));
 /* Добавление буквы в textarea */
 keyboard.main.addEventListener('mousedown', Keyboard.addActiveClass);
 keyboard.main.addEventListener('mouseup', Keyboard.removeActiveClass);
-keyboard.main.addEventListener('click', Keyboard.addParagraph);
-keyboard.main.addEventListener('click', Keyboard.removeSymbolText);
-keyboard.main.addEventListener('click', keyboard.addLetterToTextarea.bind(keyboard));
+keyboard.main.addEventListener('mousedown', Keyboard.addParagraph);
+keyboard.main.addEventListener('mousedown', Keyboard.removeSymbolText);
+keyboard.main.addEventListener('mousedown', keyboard.addLetterToTextarea.bind(keyboard));
