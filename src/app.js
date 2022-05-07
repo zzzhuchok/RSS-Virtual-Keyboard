@@ -153,6 +153,14 @@ class Keyboard {
     const textarea = document.querySelector('.textarea');
     textarea.value += '\n';
   }
+
+  static removeSymbolText(event) {
+    const element = event.target.closest('.Backspace');
+    if (!element) return;
+
+    const textarea = document.querySelector('.textarea');
+    textarea.value = textarea.value.slice(0, textarea.value.length - 1);
+  }
 }
 
 /* ------------------------------------------------------------------------- */
