@@ -119,6 +119,26 @@ class Keyboard {
     } else {
       this.lang = 'en';
     }
+
+    const keyNormalCollCurrentLang = this.main.querySelectorAll(`.${this.lang} .normal`);
+    const keyCapsCollCurrentLang = this.main.querySelectorAll(`.${this.lang} .caps`);
+    if (this.caps) {
+      keyNormalCollCurrentLang.forEach((item) => {
+        item.classList.add('hidden');
+      });
+
+      keyCapsCollCurrentLang.forEach((item) => {
+        item.classList.remove('hidden');
+      });
+    } else {
+      keyNormalCollCurrentLang.forEach((item) => {
+        item.classList.remove('hidden');
+      });
+
+      keyCapsCollCurrentLang.forEach((item) => {
+        item.classList.add('hidden');
+      });
+    }
   }
 
   addLetterToTextarea(event) {
@@ -146,6 +166,25 @@ class Keyboard {
     textarea.value += keyInner;
   }
 
+  onCapsLock() {
+    const keyNormalColl = this.main.querySelectorAll(`.${this.lang} .normal`);
+    const keyCapsColl = this.main.querySelectorAll(`.${this.lang} .caps`);
+
+    if (!this.caps) {
+      this.caps = true;
+    } else {
+      this.caps = false;
+    }
+
+    keyNormalColl.forEach((item) => {
+      item.classList.toggle('hidden');
+    });
+
+    keyCapsColl.forEach((item) => {
+      item.classList.toggle('hidden');
+    });
+  }
+
   static addParagraph() {
     const textarea = document.querySelector('.textarea');
     textarea.value += '\n';
@@ -169,7 +208,7 @@ class Keyboard {
   static addActiveClass(event) {
     const element = event.target.closest('.key');
 
-    if (element === null) return;
+    if (!element) return;
     element.classList.add('active');
   }
 
@@ -227,3 +266,4 @@ enter.addEventListener('mousedown', Keyboard.addParagraph);
 space.addEventListener('mousedown', Keyboard.addSpace);
 tab.addEventListener('mousedown', Keyboard.addHorizontalIndent);
 backspace.addEventListener('mousedown', Keyboard.removeSymbolText);
+capslock.addEventListener('click', keyboard.onCapsLock.bind(keyboard));
