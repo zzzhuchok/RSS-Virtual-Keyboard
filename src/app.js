@@ -146,34 +146,22 @@ class Keyboard {
     textarea.value += keyInner;
   }
 
-  static addParagraph(event) {
-    const element = event.target.closest('.Enter');
-    if (!element) return;
-
+  static addParagraph() {
     const textarea = document.querySelector('.textarea');
     textarea.value += '\n';
   }
 
-  static addHorizontalIndent(event) {
-    const element = event.target.closest('.Tab');
-    if (!element) return;
-
+  static addHorizontalIndent() {
     const textarea = document.querySelector('.textarea');
     textarea.value += '    ';
   }
 
-  static addSpace(event) {
-    const element = event.target.closest('.Space');
-    if (!element) return;
-
+  static addSpace() {
     const textarea = document.querySelector('.textarea');
     textarea.value += ' ';
   }
 
-  static removeSymbolText(event) {
-    const element = event.target.closest('.Backspace');
-    if (!element) return;
-
+  static removeSymbolText() {
     const textarea = document.querySelector('.textarea');
     textarea.value = textarea.value.slice(0, textarea.value.length - 1);
   }
@@ -227,8 +215,15 @@ changeLang.addEventListener('click', keyboard.toggleLang.bind(keyboard));
 /* Добавление буквы в textarea */
 keyboard.main.addEventListener('mousedown', Keyboard.addActiveClass);
 keyboard.main.addEventListener('mouseup', Keyboard.removeActiveClass);
-keyboard.main.addEventListener('mousedown', Keyboard.addParagraph);
-keyboard.main.addEventListener('mousedown', Keyboard.addHorizontalIndent);
-keyboard.main.addEventListener('mousedown', Keyboard.addSpace);
-keyboard.main.addEventListener('mousedown', Keyboard.removeSymbolText);
 keyboard.main.addEventListener('mousedown', keyboard.addLetterToTextarea.bind(keyboard));
+
+const enter = document.querySelector('.Enter');
+const space = document.querySelector('.Space');
+const tab = document.querySelector('.Tab');
+const backspace = document.querySelector('.Backspace');
+const capslock = document.querySelector('.CapsLock');
+
+enter.addEventListener('mousedown', Keyboard.addParagraph);
+space.addEventListener('mousedown', Keyboard.addSpace);
+tab.addEventListener('mousedown', Keyboard.addHorizontalIndent);
+backspace.addEventListener('mousedown', Keyboard.removeSymbolText);
