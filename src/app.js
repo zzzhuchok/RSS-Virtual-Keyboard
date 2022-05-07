@@ -101,6 +101,25 @@ class Keyboard {
     }
     this.main.appendChild(fragment);
   }
+
+  toggleLang() {
+    const keyEn = document.querySelectorAll('.keyboard .en');
+    const keyRu = document.querySelectorAll('.keyboard .ru');
+
+    keyEn.forEach((item) => {
+      item.classList.toggle('hidden');
+    });
+
+    keyRu.forEach((item) => {
+      item.classList.toggle('hidden');
+    });
+
+    if (keyEn[0].classList.contains('hidden')) {
+      this.lang = 'ru';
+    } else {
+      this.lang = 'en';
+    }
+  }
 }
 
 /* ------------------------------------------------------------------------- */
