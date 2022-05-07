@@ -1,0 +1,112 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+*,*:before,*:after {
+    box-sizing: border-box;
+}
+
+/* ------------------------------------------------------------------- */
+
+.container {
+    max-width: 1000px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+*.hidden {
+    display: none;
+}
+
+.title {
+    text-align: center;
+    margin: 20px 0;
+}
+
+.textarea {
+    width: 700px;
+    height: 200px;
+    padding: 10px;
+    margin: 0 0 20px 0;
+
+    border-radius: 5px;
+}
+
+.keyboard {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+
+    width: 700px;
+    padding: 10px;
+    margin: 0 auto;
+
+    background: #999
+
+}
+
+.keyboard .row {
+    display: flex;
+    gap: 5px;
+    justify-content: center;
+    width: 100%;
+}
+
+.key {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    width: 40px;
+    height: 40px;
+    border: 3px solid #777;
+    border-radius: 5px;
+    padding: 2px;
+
+    background: #777;
+
+    color: #fff;
+}
+
+.key:hover {
+    cursor: pointer;
+    border: 3px solid #000;
+}
+
+.key.active {
+    background: rgb(8, 156, 65);
+}
+
+.Backspace,
+.Tab,
+.CapsLock,
+.Enter,
+.ShiftLeft,
+.ShiftRight,
+.ControlLeft,
+.ControlRight,
+.AltLeft,
+.AltRight {
+    background: #333;
+}
+
+[class *='Arrow'] {
+    background: #333;
+    font-size: 12px;
+}
+
+
+.Backspace,
+.Tab,
+.CapsLock,
+.Enter,
+.ShiftLeft,
+.ShiftRight {
+    min-width: 90px;
+
+}
+
+.Space {
+    width: 310px;
+}
