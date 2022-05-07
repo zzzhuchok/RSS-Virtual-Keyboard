@@ -161,6 +161,20 @@ class Keyboard {
     const textarea = document.querySelector('.textarea');
     textarea.value = textarea.value.slice(0, textarea.value.length - 1);
   }
+
+  static addActiveClass(event) {
+    const element = event.target.closest('.key');
+
+    if (element === null) return;
+    element.classList.add('active');
+  }
+
+  static removeActiveClass(event) {
+    const element = event.target.closest('.key');
+
+    if (!element) return;
+    element.classList.remove('active');
+  }
 }
 
 /* ------------------------------------------------------------------------- */
@@ -182,3 +196,17 @@ container.append(textarea);
 const keyboard = new Keyboard();
 keyboard.init();
 keyboard.initKeys();
+
+// container.append(getElement('p', 'description', descriptionOS));
+// container.append(getElement('p', 'description', descriptionOSKey));
+
+/* Клавиша изм языка */
+const changeLang = document.querySelector('.changeLang');
+changeLang.addEventListener('click', keyboard.toggleLang.bind(keyboard));
+
+/* Добавление буквы в textarea */
+keyboard.main.addEventListener('mousedown', Keyboard.addActiveClass);
+keyboard.main.addEventListener('mouseup', Keyboard.removeActiveClass);
+keyboard.main.addEventListener('click', Keyboard.addParagraph);
+keyboard.main.addEventListener('click', Keyboard.removeSymbolText);
+keyboard.main.addEventListener('click', keyboard.addLetterToTextarea.bind(keyboard));
