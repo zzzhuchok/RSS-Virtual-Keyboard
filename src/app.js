@@ -120,6 +120,31 @@ class Keyboard {
       this.lang = 'en';
     }
   }
+
+  addLetterToTextarea(event) {
+    const { lang } = this;
+    const element = event.target.closest('.key');
+
+    if (element === null) return;
+
+    /* КОСТЫЛЬ!!! */
+    const keyProgr = ['Backspace', 'Enter'];
+    for (let i = 0; i < keyProgr.length; i += 1) {
+      if (element.classList.contains(keyProgr[i])) return;
+    }
+
+    const keyCollection = element.querySelector(`.${lang}`).children;
+
+    let keyInner = '';
+    for (let i = 0; i < keyCollection.length; i += 1) {
+      if (!keyCollection[i].matches('.hidden')) {
+        keyInner = keyCollection[i].innerHTML;
+      }
+    }
+
+    const textarea = document.querySelector('.textarea');
+    textarea.value += keyInner;
+  }
 }
 
 /* ------------------------------------------------------------------------- */
