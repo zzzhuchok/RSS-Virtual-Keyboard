@@ -88,8 +88,17 @@ class Keyboard {
 
       for (let j = 0; j < this.keys.keyEn[i].length; j += 1) {
         const btn = document.createElement('div');
-        const keyEn = `<span class = "en"><span class = "normal">${this.keys.keyEn[i][j]}</span><span class = "shift hidden">${this.keys.keyEnUp[i][j]}</span><span class = "caps hidden">${this.keys.keyEnCaps[i][j]}</span></span>`;
-        const keyRu = `<span class = "ru hidden"><span class = "normal">${this.keys.keyRu[i][j]}</span><span class = "shift hidden">${this.keys.keyRuUp[i][j]}</span><span class = "caps hidden">${this.keys.keyRuCaps[i][j]}</span></span>`;
+        let keyEn;
+        let keyRu;
+
+        if (this.lang === 'en') {
+          keyEn = `<span class = "en"><span class = "normal">${this.keys.keyEn[i][j]}</span><span class = "shift hidden">${this.keys.keyEnUp[i][j]}</span><span class = "caps hidden">${this.keys.keyEnCaps[i][j]}</span></span>`;
+          keyRu = `<span class = "ru hidden"><span class = "normal">${this.keys.keyRu[i][j]}</span><span class = "shift hidden">${this.keys.keyRuUp[i][j]}</span><span class = "caps hidden">${this.keys.keyRuCaps[i][j]}</span></span>`;
+        } else {
+          keyEn = `<span class = "en hidden"><span class = "normal">${this.keys.keyEn[i][j]}</span><span class = "shift hidden">${this.keys.keyEnUp[i][j]}</span><span class = "caps hidden">${this.keys.keyEnCaps[i][j]}</span></span>`;
+          keyRu = `<span class = "ru"><span class = "normal">${this.keys.keyRu[i][j]}</span><span class = "shift hidden">${this.keys.keyRuUp[i][j]}</span><span class = "caps hidden">${this.keys.keyRuCaps[i][j]}</span></span>`;
+        }
+
         btn.classList = `key ${this.keys.keyCodes[i][j]}`;
 
         btn.insertAdjacentHTML('beforeend', keyEn);
@@ -139,6 +148,8 @@ class Keyboard {
         item.classList.add('hidden');
       });
     }
+
+    localStorage.setItem('lang', this.lang);
   }
 
   addLetterToTextarea(event) {
@@ -163,7 +174,10 @@ class Keyboard {
     }
 
     const textarea = document.querySelector('.textarea');
-    textarea.value += keyInner;
+    textarea.focus();
+    textarea.setRangeText(keyInner, textarea.selectionStart, textarea.selectionEnd, 'end');
+
+    localStorage.setItem('textareaValue', textarea.value);
   }
 
   onCapsLock(event) {
@@ -197,6 +211,7 @@ class Keyboard {
   onShift() {
     const keyNormalColl = this.main.querySelectorAll(`.${this.lang} .normal`);
     const keyShiftColl = this.main.querySelectorAll(`.${this.lang} .shift`);
+    // const keyCapsColl = this.main.querySelectorAll(`.${this.lang} .caps`);
 
     this.shift = true;
 
@@ -226,22 +241,35 @@ class Keyboard {
 
   addParagraph() {
     const textarea = document.querySelector('.textarea');
-    textarea.value += '\n';
+    textarea.focus();
+    textarea.setRangeText('\n', textarea.selectionStart, textarea.selectionEnd, 'end');
   }
 
   addHorizontalIndent() {
     const textarea = document.querySelector('.textarea');
-    textarea.value += '    ';
+    textarea.focus();
+    textarea.setRangeText('\t', textarea.selectionStart, textarea.selectionEnd, 'end');
   }
 
   addSpace() {
     const textarea = document.querySelector('.textarea');
-    textarea.value += ' ';
+    textarea.focus();
+    textarea.setRangeText(' ', textarea.selectionStart, textarea.selectionEnd, 'end');
   }
 
   removeSymbolText() {
     const textarea = document.querySelector('.textarea');
-    textarea.value = textarea.value.slice(0, textarea.value.length - 1);
+    textarea.focus();
+
+    const start = textarea.selectionStart;
+    const end = textarea.selectionEnd;
+
+    if (start !== end || (start === 0 && end === 0)) {
+      textarea.setRangeText('', textarea.selectionStart, textarea.selectionEnd, 'end');
+      return;
+    }
+
+    textarea.setRangeText('', textarea.selectionStart - 1, textarea.selectionEnd, 'end');
   }
 
   addActiveClass(event) {
@@ -280,6 +308,7 @@ class Keyboard {
     }
 
     if (key && key.classList.contains('Tab')) {
+      event.preventDefault();
       this.addHorizontalIndent();
       return;
     }
@@ -312,6 +341,7 @@ class Keyboard {
     }
 
     if (key && (key.classList.contains('ControlLeft') || key.classList.contains('AltLeft'))) {
+      event.preventDefault();
       if (event.altKey && event.ctrlKey) {
         this.toggleLang();
       }
@@ -327,6 +357,12 @@ class Keyboard {
     }
     this.removeActiveClass(event);
   }
+
+  // getPosCursor(event) {
+  //   const el = event.currentTarget;
+  //   this.posTextareaStart = el.selectionStart;
+  //   this.posTextareaEnd = el.selectionEnd;
+  // }
 
   // static onFocus() {
   //   const textarea = document.querySelector('.textarea');
@@ -344,25 +380,27 @@ class Keyboard {
 /* ------------------------------------------------------------------------- */
 
 const titleHeader = 'RSS Virtual Keyboard';
-// const descriptionOS = 'Windows';
-// const descriptionOSKey = 'ctrl + alt';
+const descriptionOS = 'Windows';
+const descriptionOSKey = 'ctrl + alt';
 
 const { body } = document;
 
 const container = getElement('div', 'container');
 const title = getElement('h1', 'title title-h1', titleHeader);
 const textarea = getElement('textarea', 'textarea', '');
+textarea.value = localStorage.getItem('textareaValue');
 
 body.prepend(container);
 container.append(title);
 container.append(textarea);
 
 const keyboard = new Keyboard();
+keyboard.lang = localStorage.getItem('lang');
 keyboard.init();
 keyboard.initKeys();
 
-// container.append(getElement('p', 'description', descriptionOS));
-// container.append(getElement('p', 'description', descriptionOSKey));
+container.append(getElement('p', 'description', descriptionOS));
+container.append(getElement('p', 'description', descriptionOSKey));
 
 /* Клавиша изм языка */
 const changeLang = document.querySelector('.changeLang');
@@ -384,15 +422,23 @@ const shift = document.querySelector('.ShiftLeft');
 enter.addEventListener('mousedown', keyboard.addParagraph);
 space.addEventListener('mousedown', keyboard.addSpace);
 tab.addEventListener('mousedown', keyboard.addHorizontalIndent);
-backspace.addEventListener('mousedown', keyboard.removeSymbolText);
+backspace.addEventListener('mousedown', keyboard.removeSymbolText.bind(keyboard));
 capslock.addEventListener('click', keyboard.onCapsLock.bind(keyboard));
 shift.addEventListener('mousedown', keyboard.onShift.bind(keyboard));
 shift.addEventListener('mouseup', keyboard.onShift.bind(keyboard));
 
 // textarea.addEventListener('blur', Keyboard.onFocus);
-// textarea.addEventListener('click', keyboard.getPosCursor.bind(keyboard));
+// textarea.addEventListener('click', keyboard.getPosCursor);
 // keyboard.main.addEventListener('click', Keyboard.onFocus);
 
 /* События клавиатуры */
 document.addEventListener('keydown', keyboard.keydownKeyboard.bind(keyboard));
 document.addEventListener('keyup', keyboard.keyupKeyboard.bind(keyboard));
+
+// textarea.addEventListener('click', focusText);
+
+// function focusText(event) {
+//   const element = event.currentTarget;
+//   element.setRangeText('testString', element.selectionStart, element.selectionEnd, 'end');
+//   // console.log(element.selectionStart, element.selectionEnd);
+// }
