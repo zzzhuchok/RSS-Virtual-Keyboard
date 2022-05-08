@@ -143,7 +143,7 @@ class Keyboard {
 
   addLetterToTextarea(event) {
     const { lang } = this;
-    const element = event.target.closest('.key');
+    const element = event.target.closest('.key') || document.querySelector(`.${event.code}`);
 
     if (element === null) return;
 
@@ -164,11 +164,14 @@ class Keyboard {
 
     const textarea = document.querySelector('.textarea');
     textarea.value += keyInner;
+
+    return;
   }
 
-  onCapsLock() {
+  onCapsLock(event) {
     const keyNormalColl = this.main.querySelectorAll(`.${this.lang} .normal`);
     const keyCapsColl = this.main.querySelectorAll(`.${this.lang} .caps`);
+    const keyCaps = document.querySelector(`.${event.code}`) || this.main.querySelector('.CapsLock');
 
     if (!this.caps) {
       this.caps = true;
@@ -189,6 +192,8 @@ class Keyboard {
         item.classList.add('hidden');
       });
     }
+
+    keyCaps.classList.toggle('active');
   }
 
   onShift() {
@@ -221,42 +226,106 @@ class Keyboard {
     });
   }
 
-  static addParagraph() {
+  addParagraph() {
     const textarea = document.querySelector('.textarea');
     textarea.value += '\n';
   }
 
-  static addHorizontalIndent() {
+  addHorizontalIndent() {
     const textarea = document.querySelector('.textarea');
     textarea.value += '    ';
   }
 
-  static addSpace() {
+  addSpace() {
     const textarea = document.querySelector('.textarea');
     textarea.value += ' ';
   }
 
-  static removeSymbolText() {
+  removeSymbolText() {
     const textarea = document.querySelector('.textarea');
     textarea.value = textarea.value.slice(0, textarea.value.length - 1);
   }
 
-  static addActiveClass(event) {
-    const element = event.target.closest('.key');
-
+  addActiveClass(event) {
+    const element = event.target.closest('.key') || document.querySelector(`.${event.code}`);
     if (!element) return;
+
+    if (element.classList.contains('CapsLock')) return;
     element.classList.add('active');
   }
 
-  static removeActiveClass(event) {
-    const element = event.target.closest('.keyboard');
-
+  removeActiveClass(event) {
+    const element = event.target.closest('.keyboard') || document.querySelector(`.${event.code}`);
     if (!element) return;
+    if (element.matches('.key')) {
+      if (element.matches('.CapsLock')) return;
+      element.classList.remove('active');
+    }
     const elementsActive = element.querySelectorAll('.key.active');
 
     for (let i = 0; i < elementsActive.length; i += 1) {
+      if (elementsActive[i].classList.contains('CapsLock')) break;
       elementsActive[i].classList.remove('active');
     }
+  }
+
+  keydownKeyboard(event) {
+    const key = this.main.querySelector(`.${event.code}`);
+    event.preventDefault();
+    this.addActiveClass(event);
+
+    if (key && key.classList.contains('Backspace')) {
+      this.removeSymbolText();
+      return;
+    }
+
+    if (key && key.classList.contains('Tab')) {
+      this.addHorizontalIndent();
+      return;
+    }
+
+    if (key && key.classList.contains('CapsLock')) {
+      if (event.repeat) {
+        return;
+      }
+      this.onCapsLock(event);
+      return;
+    }
+
+    if (key && key.classList.contains('Enter')) {
+      this.addParagraph();
+      return;
+    }
+
+    if (key && key.classList.contains('ShiftLeft')) {
+      if (event.repeat) {
+        return;
+      }
+
+      this.onShift();
+      return;
+    }
+
+    if (key && key.classList.contains('Space')) {
+      this.addSpace();
+      return;
+    }
+
+    if (key && (key.classList.contains('ControlLeft') || key.classList.contains('AltLeft'))) {
+      if (event.altKey && event.ctrlKey) {
+        this.toggleLang();
+      }
+      return;
+    }
+
+    this.addLetterToTextarea(event);
+  }
+
+  keyupKeyboard(event) {
+    if (event.code === 'ShiftLeft') {
+      this.offShift();
+    }
+    this.removeActiveClass(event);
   }
 
   // static onFocus() {
@@ -300,8 +369,8 @@ const changeLang = document.querySelector('.changeLang');
 changeLang.addEventListener('click', keyboard.toggleLang.bind(keyboard));
 
 /* Добавление буквы в textarea */
-keyboard.main.addEventListener('mousedown', Keyboard.addActiveClass);
-keyboard.main.addEventListener('mouseup', Keyboard.removeActiveClass);
+keyboard.main.addEventListener('mousedown', keyboard.addActiveClass);
+keyboard.main.addEventListener('mouseup', keyboard.removeActiveClass);
 
 keyboard.main.addEventListener('mousedown', keyboard.addLetterToTextarea.bind(keyboard));
 
@@ -312,10 +381,10 @@ const backspace = document.querySelector('.Backspace');
 const capslock = document.querySelector('.CapsLock');
 const shift = document.querySelector('.ShiftLeft');
 
-enter.addEventListener('mousedown', Keyboard.addParagraph);
-space.addEventListener('mousedown', Keyboard.addSpace);
-tab.addEventListener('mousedown', Keyboard.addHorizontalIndent);
-backspace.addEventListener('mousedown', Keyboard.removeSymbolText);
+enter.addEventListener('mousedown', keyboard.addParagraph);
+space.addEventListener('mousedown', keyboard.addSpace);
+tab.addEventListener('mousedown', keyboard.addHorizontalIndent);
+backspace.addEventListener('mousedown', keyboard.removeSymbolText);
 capslock.addEventListener('click', keyboard.onCapsLock.bind(keyboard));
 shift.addEventListener('mousedown', keyboard.onShift.bind(keyboard));
 shift.addEventListener('mouseup', keyboard.onShift.bind(keyboard));
@@ -323,3 +392,7 @@ shift.addEventListener('mouseup', keyboard.onShift.bind(keyboard));
 // textarea.addEventListener('blur', Keyboard.onFocus);
 // textarea.addEventListener('click', keyboard.getPosCursor.bind(keyboard));
 // keyboard.main.addEventListener('click', Keyboard.onFocus);
+
+/* События клавиатуры */
+document.addEventListener('keydown', keyboard.keydownKeyboard.bind(keyboard));
+document.addEventListener('keyup', keyboard.keyupKeyboard.bind(keyboard));
