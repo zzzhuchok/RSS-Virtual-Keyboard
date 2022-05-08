@@ -183,26 +183,36 @@ class Keyboard {
   onCapsLock(event) {
     const keyNormalColl = this.main.querySelectorAll(`.${this.lang} .normal`);
     const keyCapsColl = this.main.querySelectorAll(`.${this.lang} .caps`);
+    const keyShiftColl = this.main.querySelectorAll(`.${this.lang} .shift`);
+
     const keyCaps = document.querySelector(`.${event.code}`) || this.main.querySelector('.CapsLock');
 
     if (!this.caps) {
       this.caps = true;
-      keyNormalColl.forEach((item) => {
-        item.classList.add('hidden');
-      });
 
-      keyCapsColl.forEach((item) => {
-        item.classList.remove('hidden');
-      });
+      if (this.shift) {
+        keyCapsColl.forEach((item) => item.classList.add('hidden'));
+        keyNormalColl.forEach((item) => item.classList.add('hidden'));
+        keyShiftColl.forEach((item) => item.classList.remove('hidden'));
+        keyCaps.classList.toggle('active');
+        return;
+      }
+
+      keyNormalColl.forEach((item) => item.classList.add('hidden'));
+      keyCapsColl.forEach((item) => item.classList.remove('hidden'));
     } else {
       this.caps = false;
-      keyNormalColl.forEach((item) => {
-        item.classList.remove('hidden');
-      });
 
-      keyCapsColl.forEach((item) => {
-        item.classList.add('hidden');
-      });
+      if (this.shift) {
+        keyCapsColl.forEach((item) => item.classList.add('hidden'));
+        keyNormalColl.forEach((item) => item.classList.add('hidden'));
+        keyShiftColl.forEach((item) => item.classList.remove('hidden'));
+        keyCaps.classList.toggle('active');
+        return;
+      }
+
+      keyNormalColl.forEach((item) => item.classList.remove('hidden'));
+      keyCapsColl.forEach((item) => item.classList.add('hidden'));
     }
 
     keyCaps.classList.toggle('active');
@@ -211,32 +221,37 @@ class Keyboard {
   onShift() {
     const keyNormalColl = this.main.querySelectorAll(`.${this.lang} .normal`);
     const keyShiftColl = this.main.querySelectorAll(`.${this.lang} .shift`);
-    // const keyCapsColl = this.main.querySelectorAll(`.${this.lang} .caps`);
+    const keyCapsColl = this.main.querySelectorAll(`.${this.lang} .caps`);
 
     this.shift = true;
 
-    keyNormalColl.forEach((item) => {
-      item.classList.toggle('hidden');
-    });
+    if (this.caps) {
+      keyCapsColl.forEach((item) => item.classList.add('hidden'));
+      keyNormalColl.forEach((item) => item.classList.add('hidden'));
+      keyShiftColl.forEach((item) => item.classList.remove('hidden'));
+      return;
+    }
 
-    keyShiftColl.forEach((item) => {
-      item.classList.toggle('hidden');
-    });
+    keyNormalColl.forEach((item) => item.classList.add('hidden'));
+    keyShiftColl.forEach((item) => item.classList.remove('hidden'));
   }
 
   offShift() {
     const keyNormalColl = this.main.querySelectorAll(`.${this.lang} .normal`);
     const keyShiftColl = this.main.querySelectorAll(`.${this.lang} .shift`);
+    const keyCapsColl = this.main.querySelectorAll(`.${this.lang} .caps`);
 
     this.shift = false;
 
-    keyNormalColl.forEach((item) => {
-      item.classList.toggle('hidden');
-    });
+    if (this.caps) {
+      keyCapsColl.forEach((item) => item.classList.remove('hidden'));
+      keyNormalColl.forEach((item) => item.classList.add('hidden'));
+      keyShiftColl.forEach((item) => item.classList.add('hidden'));
+      return;
+    }
 
-    keyShiftColl.forEach((item) => {
-      item.classList.toggle('hidden');
-    });
+    keyNormalColl.forEach((item) => item.classList.remove('hidden'));
+    keyShiftColl.forEach((item) => item.classList.add('hidden'));
   }
 
   addParagraph() {
@@ -287,13 +302,20 @@ class Keyboard {
     if (element.matches('.key')) {
       if (element.matches('.CapsLock')) return;
       element.classList.remove('active');
+      return;
     }
 
     const elementsActive = element.querySelectorAll('.key.active');
+    const shift = element.querySelector('.ShiftLeft');
+
     for (let i = 0; i < elementsActive.length; i += 1) {
       if (!elementsActive[i].classList.contains('CapsLock')) {
         elementsActive[i].classList.remove('active');
       }
+    }
+
+    if (this.shift) {
+      shift.classList.add('active');
     }
   }
 
@@ -342,6 +364,11 @@ class Keyboard {
 
     if (key && (key.classList.contains('ControlLeft') || key.classList.contains('AltLeft'))) {
       event.preventDefault();
+
+      if (event.repeat) {
+        return;
+      }
+
       if (event.altKey && event.ctrlKey) {
         this.toggleLang();
       }
@@ -407,8 +434,8 @@ const changeLang = document.querySelector('.changeLang');
 changeLang.addEventListener('click', keyboard.toggleLang.bind(keyboard));
 
 /* Добавление буквы в textarea */
-document.addEventListener('mousedown', keyboard.addActiveClass);
-document.addEventListener('mouseup', keyboard.removeActiveClass);
+keyboard.main.addEventListener('mousedown', keyboard.addActiveClass);
+keyboard.main.addEventListener('mouseup', keyboard.removeActiveClass.bind(keyboard));
 
 keyboard.main.addEventListener('mousedown', keyboard.addLetterToTextarea.bind(keyboard));
 
@@ -425,7 +452,7 @@ tab.addEventListener('mousedown', keyboard.addHorizontalIndent);
 backspace.addEventListener('mousedown', keyboard.removeSymbolText.bind(keyboard));
 capslock.addEventListener('click', keyboard.onCapsLock.bind(keyboard));
 shift.addEventListener('mousedown', keyboard.onShift.bind(keyboard));
-shift.addEventListener('mouseup', keyboard.onShift.bind(keyboard));
+shift.addEventListener('mouseup', keyboard.offShift.bind(keyboard));
 
 // textarea.addEventListener('blur', Keyboard.onFocus);
 // textarea.addEventListener('click', keyboard.getPosCursor);
