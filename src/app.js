@@ -3,43 +3,43 @@ const keysData = {
     ['`', '1', '2', '3', '4', '5', '6', '7', '8', '9', '0', '-', '=', 'Backspace'],
     ['Tab', 'q', 'w', 'e', 'r', 't', 'y', 'u', 'i', 'o', 'p', '[', ']', '\\'],
     ['CapsLock', 'a', 's', 'd', 'f', 'g', 'h', 'j', 'k', 'l', ';', '\'', 'Entr'],
-    ['Shift', 'z', 'x', 'c', 'v', 'b', 'n', 'm', ',', '.', '/', 'Up', 'Shift'],
-    ['Ctrl', 'Alt', 'Space', 'Alt', 'Ctr', 'Left', 'Down', 'Right', 'Lang'],
+    ['Shift', 'z', 'x', 'c', 'v', 'b', 'n', 'm', ',', '.', '/', '▲', 'Shift'],
+    ['Ctrl', 'Alt', 'Space', 'Alt', 'Ctr', '◄', '▼', '►', 'Lang'],
   ],
   keyEnUp: [
     ['~', '!', '@', '#', '$', '%', '^', '&', '*', '(', ')', '_', '+', 'Backspace'],
     ['Tab', 'Q', 'W', 'E', 'R', 'T', 'Y', 'U', 'I', 'O', 'P', '{', '}', '|'],
     ['CapsLock', 'A', 'S', 'D', 'F', 'G', 'H', 'J', 'K', 'L', ':', '"', 'Entr'],
-    ['Shift', 'Z', 'X', 'C', 'V', 'B', 'N', 'M', '<', '>', '?', 'Up', 'Shift'],
-    ['Ctrl', 'Alt', 'Space', 'Alt', 'Ctr', 'Left', 'Down', 'Right', 'Lang'],
+    ['Shift', 'Z', 'X', 'C', 'V', 'B', 'N', 'M', '<', '>', '?', '▲', 'Shift'],
+    ['Ctrl', 'Alt', 'Space', 'Alt', 'Ctr', '◄', '▼', '►', 'Lang'],
   ],
   keyEnCaps: [
     ['`', '1', '2', '3', '4', '5', '6', '7', '8', '9', '0', '-', '=', 'Backspace'],
     ['Tab', 'Q', 'W', 'E', 'R', 'T', 'Y', 'U', 'I', 'O', 'P', '[', ']', '\\'],
     ['CapsLock', 'A', 'S', 'D', 'F', 'G', 'H', 'J', 'K', 'L', ';', '\'', 'Entr'],
-    ['Shift', 'Z', 'X', 'C', 'V', 'B', 'N', 'M', ',', '.', '/', 'Up', 'Shift'],
-    ['Ctrl', 'Alt', 'Space', 'Alt', 'Ctr', 'Left', 'Down', 'Right', 'Lang'],
+    ['Shift', 'Z', 'X', 'C', 'V', 'B', 'N', 'M', ',', '.', '/', '▲', 'Shift'],
+    ['Ctrl', 'Alt', 'Space', 'Alt', 'Ctr', '◄', '▼', '►', 'Lang'],
   ],
   keyRu: [
     ['ё', '1', '2', '3', '4', '5', '6', '7', '8', '9', '0', '-', '=', 'Backspace'],
     ['Tab', 'й', 'ц', 'у', 'к', 'е', 'н', 'г', 'ш', 'щ', 'з', 'х', 'ъ', '\\'],
     ['CapsLock', 'ф', 'ы', 'в', 'а', 'п', 'р', 'о', 'л', 'д', 'ж', 'э', 'Entr'],
-    ['Shift', 'я', 'ч', 'с', 'м', 'и', 'т', 'ь', 'б', 'ю', '.', 'Up', 'Shift'],
-    ['Ctrl', 'Alt', 'Space', 'Alt', 'Ctr', 'Left', 'Down', 'Right', 'Lang'],
+    ['Shift', 'я', 'ч', 'с', 'м', 'и', 'т', 'ь', 'б', 'ю', '.', '▲', 'Shift'],
+    ['Ctrl', 'Alt', 'Space', 'Alt', 'Ctr', '◄', '▼', '►', 'Lang'],
   ],
   keyRuUp: [
     ['Ё', '!', '"', '№', ';', '%', ':', '?', '*', '(', ')', '_', '+', 'Backspace'],
     ['Tab', 'Й', 'Ц', 'У', 'К', 'Е', 'Н', 'Г', 'Ш', 'Щ', 'З', 'Х', 'Ъ', '\\'],
     ['CapsLock', 'Ф', 'Ы', 'В', 'А', 'П', 'Р', 'О', 'Л', 'Д', 'Ж', 'Э', 'Entr'],
-    ['Shift', 'Я', 'Ч', 'С', 'М', 'И', 'Т', 'Ь', 'Б', 'Ю', ',', 'Up', 'Shift'],
-    ['Ctrl', 'Alt', 'Space', 'Alt', 'Ctr', 'Left', 'Down', 'Right', 'Lang'],
+    ['Shift', 'Я', 'Ч', 'С', 'М', 'И', 'Т', 'Ь', 'Б', 'Ю', ',', '▲', 'Shift'],
+    ['Ctrl', 'Alt', 'Space', 'Alt', 'Ctr', '◄', '▼', '►', 'Lang'],
   ],
   keyRuCaps: [
     ['Ё', '1', '2', '3', '4', '5', '6', '7', '8', '9', '0', '-', '=', 'Backspace'],
     ['Tab', 'Й', 'Ц', 'У', 'К', 'Е', 'Н', 'Г', 'Ш', 'Щ', 'З', 'Х', 'Ъ', '\\'],
     ['CapsLock', 'Ф', 'Ы', 'В', 'А', 'П', 'Р', 'О', 'Л', 'Д', 'Ж', 'Э', 'Entr'],
-    ['Shift', 'Я', 'Ч', 'С', 'М', 'И', 'Т', 'Ь', 'Б', 'Ю', '.', 'Up', 'Shift'],
-    ['Ctrl', 'Alt', 'Space', 'Alt', 'Ctr', 'Left', 'Down', 'Right', 'Lang'],
+    ['Shift', 'Я', 'Ч', 'С', 'М', 'И', 'Т', 'Ь', 'Б', 'Ю', '.', '▲', 'Shift'],
+    ['Ctrl', 'Alt', 'Space', 'Alt', 'Ctr', '◄', '▼', '►', 'Lang'],
   ],
   keyCodes: [
     ['Backquote', 'Digit1', 'Digit2', 'Digit3', 'Digit4', 'Digit5', 'Digit6', 'Digit7', 'Digit8', 'Digit9', 'Digit0', 'Minus', 'Equal', 'Backspace'],
@@ -145,10 +145,10 @@ class Keyboard {
     const { lang } = this;
     const element = event.target.closest('.key') || document.querySelector(`.${event.code}`);
 
-    if (element === null) return;
+    if (!element) return;
 
     /* КОСТЫЛЬ!!! */
-    const keyProgr = ['Backspace', 'Tab', 'CapsLock', 'Enter', 'ShiftLeft', 'ShiftRight', 'ControlLeft', 'ControlRight', 'AltLeft', 'Space', 'AltRight', 'ArrowLeft', 'ArrowUp', 'ArrowDown', 'ArrowRight', 'changeLang'];
+    const keyProgr = ['Backspace', 'Tab', 'CapsLock', 'Enter', 'ShiftLeft', 'ShiftRight', 'ControlLeft', 'ControlRight', 'AltLeft', 'Space', 'AltRight', 'changeLang'];
     for (let i = 0; i < keyProgr.length; i += 1) {
       if (element.classList.contains(keyProgr[i])) return;
     }
@@ -158,14 +158,12 @@ class Keyboard {
     let keyInner = '';
     for (let i = 0; i < keyCollection.length; i += 1) {
       if (!keyCollection[i].matches('.hidden')) {
-        keyInner = keyCollection[i].innerHTML;
+        keyInner = keyCollection[i].textContent;
       }
     }
 
     const textarea = document.querySelector('.textarea');
     textarea.value += keyInner;
-
-    return;
   }
 
   onCapsLock(event) {
@@ -255,17 +253,19 @@ class Keyboard {
   }
 
   removeActiveClass(event) {
-    const element = event.target.closest('.keyboard') || document.querySelector(`.${event.code}`);
+    const element = document.querySelector(`.${event.code}`) || document.querySelector('.keyboard');
+
     if (!element) return;
     if (element.matches('.key')) {
       if (element.matches('.CapsLock')) return;
       element.classList.remove('active');
     }
-    const elementsActive = element.querySelectorAll('.key.active');
 
+    const elementsActive = element.querySelectorAll('.key.active');
     for (let i = 0; i < elementsActive.length; i += 1) {
-      if (elementsActive[i].classList.contains('CapsLock')) break;
-      elementsActive[i].classList.remove('active');
+      if (!elementsActive[i].classList.contains('CapsLock')) {
+        elementsActive[i].classList.remove('active');
+      }
     }
   }
 
@@ -369,8 +369,8 @@ const changeLang = document.querySelector('.changeLang');
 changeLang.addEventListener('click', keyboard.toggleLang.bind(keyboard));
 
 /* Добавление буквы в textarea */
-keyboard.main.addEventListener('mousedown', keyboard.addActiveClass);
-keyboard.main.addEventListener('mouseup', keyboard.removeActiveClass);
+document.addEventListener('mousedown', keyboard.addActiveClass);
+document.addEventListener('mouseup', keyboard.removeActiveClass);
 
 keyboard.main.addEventListener('mousedown', keyboard.addLetterToTextarea.bind(keyboard));
 
