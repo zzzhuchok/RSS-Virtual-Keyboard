@@ -13,6 +13,8 @@
     max-width: 1000px;
     margin: 0 auto;
     text-align: center;
+
+    font-family: sans-serif;
 }
 
 *.hidden {
@@ -20,17 +22,49 @@
 }
 
 .title {
-    text-align: center;
     margin: 20px 0;
+    color: #333;
 }
 
 .textarea {
     width: 700px;
-    height: 200px;
+    min-height: 200px;
+    max-height: 300px;
     padding: 10px;
     margin: 0 0 20px 0;
 
     border-radius: 5px;
+    background: #fafafa;
+
+    font-size: 18px;
+
+    overflow-y: auto;
+    resize: vertical;
+
+    &:focus {
+        outline-color: #999;
+    }
+}
+
+.description {
+    display: flex;
+    justify-content: space-between;
+    max-width: 700px;
+    margin: 0 auto 2px;
+
+    &__hot-key {
+        & span {
+            font-weight: bold;
+            color: rgb(211, 58, 58);
+        }
+    }
+
+    &__OS {
+        & span {
+            font-weight: bold;
+            color: #333;
+        }
+    }
 }
 
 .keyboard {
@@ -39,17 +73,32 @@
     gap: 5px;
 
     width: 700px;
-    padding: 10px;
-    margin: 0 auto;
+    padding: 10px 10px 25px;
+    margin: 0 auto 20px;
 
-    background: #999
+    border-radius: 5px;
+    background: #999;
 
+    position: relative;
+
+    &::after {
+        content: 'zzzhuchok © 2022';
+        width: 100%;
+        padding: 5px 10px;
+
+        font-size: 12px;
+        text-align: right;
+        color: #555;
+
+        position: absolute;
+        left: 0;
+        bottom: 0;
+    }
 }
 
 .keyboard .row {
     display: flex;
     gap: 5px;
-    justify-content: center;
     width: 100%;
 }
 
@@ -60,22 +109,67 @@
     
     width: 40px;
     height: 40px;
-    border: 3px solid #777;
+    border: 2px solid #777;
     border-radius: 5px;
     padding: 2px;
 
     background: #777;
 
     color: #fff;
+
+    user-select: none;
+    transition: background 0.1s ease-in-out,
+                border-color 0.1s ease-in-out;
+
+    &.Backspace {
+        width: 95px;
+    }
+
+    &.Tab {
+        width: 50px;
+        font-size: 14px;
+    }
+
+    &.CapsLock {
+        width: 80px;
+    }
+
+    &.Enter {
+        width: 100px;
+    }
+
+    &.ShiftLeft {
+        width: 95px;
+    }
+
+    &.ShiftRight {
+        width: 90px;
+    }
+
+    &.MetaLeft {
+        font-size: 12px;
+    }
+
+    &.changeLang {
+        width: 45px;
+        background: rgba(211, 58, 58, 0.7);
+
+        font-size: 12px;
+    }
+    
+    &.Space {
+        width: 270px;
+    }
 }
 
 .key:hover {
     cursor: pointer;
-    border: 3px solid #000;
+    border: 2px solid #000;
 }
 
 .key.active {
-    background: rgb(8, 156, 65);
+    background: rgba(30, 134, 70, 0.6);
+    border-color: #999;
 }
 
 .Backspace,
@@ -87,26 +181,14 @@
 .ControlLeft,
 .ControlRight,
 .AltLeft,
-.AltRight {
+.AltRight,
+.Delete, 
+.MetaLeft {
     background: #333;
+    font-size: 14px;
 }
 
 [class *='Arrow'] {
     background: #333;
     font-size: 12px;
-}
-
-
-.Backspace,
-.Tab,
-.CapsLock,
-.Enter,
-.ShiftLeft,
-.ShiftRight {
-    min-width: 90px;
-
-}
-
-.Space {
-    width: 310px;
 }
