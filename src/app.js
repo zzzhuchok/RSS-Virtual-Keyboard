@@ -1,49 +1,49 @@
 const keysData = {
   keyEn: [
     ['`', '1', '2', '3', '4', '5', '6', '7', '8', '9', '0', '-', '=', 'Backspace'],
-    ['Tab', 'q', 'w', 'e', 'r', 't', 'y', 'u', 'i', 'o', 'p', '[', ']', '\\'],
-    ['CapsLock', 'a', 's', 'd', 'f', 'g', 'h', 'j', 'k', 'l', ';', '\'', 'Entr'],
+    ['Tab', 'q', 'w', 'e', 'r', 't', 'y', 'u', 'i', 'o', 'p', '[', ']', '\\', 'Del'],
+    ['CapsLock', 'a', 's', 'd', 'f', 'g', 'h', 'j', 'k', 'l', ';', '\'', 'Enter'],
     ['Shift', 'z', 'x', 'c', 'v', 'b', 'n', 'm', ',', '.', '/', '▲', 'Shift'],
     ['Ctrl', 'Alt', 'Space', 'Alt', 'Ctr', '◄', '▼', '►', 'Lang'],
   ],
   keyEnUp: [
     ['~', '!', '@', '#', '$', '%', '^', '&', '*', '(', ')', '_', '+', 'Backspace'],
-    ['Tab', 'Q', 'W', 'E', 'R', 'T', 'Y', 'U', 'I', 'O', 'P', '{', '}', '|'],
-    ['CapsLock', 'A', 'S', 'D', 'F', 'G', 'H', 'J', 'K', 'L', ':', '"', 'Entr'],
+    ['Tab', 'Q', 'W', 'E', 'R', 'T', 'Y', 'U', 'I', 'O', 'P', '{', '}', '|', 'Del'],
+    ['CapsLock', 'A', 'S', 'D', 'F', 'G', 'H', 'J', 'K', 'L', ':', '"', 'Enter'],
     ['Shift', 'Z', 'X', 'C', 'V', 'B', 'N', 'M', '<', '>', '?', '▲', 'Shift'],
     ['Ctrl', 'Alt', 'Space', 'Alt', 'Ctr', '◄', '▼', '►', 'Lang'],
   ],
   keyEnCaps: [
     ['`', '1', '2', '3', '4', '5', '6', '7', '8', '9', '0', '-', '=', 'Backspace'],
-    ['Tab', 'Q', 'W', 'E', 'R', 'T', 'Y', 'U', 'I', 'O', 'P', '[', ']', '\\'],
-    ['CapsLock', 'A', 'S', 'D', 'F', 'G', 'H', 'J', 'K', 'L', ';', '\'', 'Entr'],
+    ['Tab', 'Q', 'W', 'E', 'R', 'T', 'Y', 'U', 'I', 'O', 'P', '[', ']', '\\', 'Del'],
+    ['CapsLock', 'A', 'S', 'D', 'F', 'G', 'H', 'J', 'K', 'L', ';', '\'', 'Enter'],
     ['Shift', 'Z', 'X', 'C', 'V', 'B', 'N', 'M', ',', '.', '/', '▲', 'Shift'],
     ['Ctrl', 'Alt', 'Space', 'Alt', 'Ctr', '◄', '▼', '►', 'Lang'],
   ],
   keyRu: [
     ['ё', '1', '2', '3', '4', '5', '6', '7', '8', '9', '0', '-', '=', 'Backspace'],
-    ['Tab', 'й', 'ц', 'у', 'к', 'е', 'н', 'г', 'ш', 'щ', 'з', 'х', 'ъ', '\\'],
-    ['CapsLock', 'ф', 'ы', 'в', 'а', 'п', 'р', 'о', 'л', 'д', 'ж', 'э', 'Entr'],
+    ['Tab', 'й', 'ц', 'у', 'к', 'е', 'н', 'г', 'ш', 'щ', 'з', 'х', 'ъ', '\\', 'Del'],
+    ['CapsLock', 'ф', 'ы', 'в', 'а', 'п', 'р', 'о', 'л', 'д', 'ж', 'э', 'Enter'],
     ['Shift', 'я', 'ч', 'с', 'м', 'и', 'т', 'ь', 'б', 'ю', '.', '▲', 'Shift'],
     ['Ctrl', 'Alt', 'Space', 'Alt', 'Ctr', '◄', '▼', '►', 'Lang'],
   ],
   keyRuUp: [
     ['Ё', '!', '"', '№', ';', '%', ':', '?', '*', '(', ')', '_', '+', 'Backspace'],
-    ['Tab', 'Й', 'Ц', 'У', 'К', 'Е', 'Н', 'Г', 'Ш', 'Щ', 'З', 'Х', 'Ъ', '\\'],
-    ['CapsLock', 'Ф', 'Ы', 'В', 'А', 'П', 'Р', 'О', 'Л', 'Д', 'Ж', 'Э', 'Entr'],
+    ['Tab', 'Й', 'Ц', 'У', 'К', 'Е', 'Н', 'Г', 'Ш', 'Щ', 'З', 'Х', 'Ъ', '\\', 'Del'],
+    ['CapsLock', 'Ф', 'Ы', 'В', 'А', 'П', 'Р', 'О', 'Л', 'Д', 'Ж', 'Э', 'Enter'],
     ['Shift', 'Я', 'Ч', 'С', 'М', 'И', 'Т', 'Ь', 'Б', 'Ю', ',', '▲', 'Shift'],
     ['Ctrl', 'Alt', 'Space', 'Alt', 'Ctr', '◄', '▼', '►', 'Lang'],
   ],
   keyRuCaps: [
     ['Ё', '1', '2', '3', '4', '5', '6', '7', '8', '9', '0', '-', '=', 'Backspace'],
-    ['Tab', 'Й', 'Ц', 'У', 'К', 'Е', 'Н', 'Г', 'Ш', 'Щ', 'З', 'Х', 'Ъ', '\\'],
-    ['CapsLock', 'Ф', 'Ы', 'В', 'А', 'П', 'Р', 'О', 'Л', 'Д', 'Ж', 'Э', 'Entr'],
+    ['Tab', 'Й', 'Ц', 'У', 'К', 'Е', 'Н', 'Г', 'Ш', 'Щ', 'З', 'Х', 'Ъ', '\\', 'Del'],
+    ['CapsLock', 'Ф', 'Ы', 'В', 'А', 'П', 'Р', 'О', 'Л', 'Д', 'Ж', 'Э', 'Enter'],
     ['Shift', 'Я', 'Ч', 'С', 'М', 'И', 'Т', 'Ь', 'Б', 'Ю', '.', '▲', 'Shift'],
     ['Ctrl', 'Alt', 'Space', 'Alt', 'Ctr', '◄', '▼', '►', 'Lang'],
   ],
   keyCodes: [
     ['Backquote', 'Digit1', 'Digit2', 'Digit3', 'Digit4', 'Digit5', 'Digit6', 'Digit7', 'Digit8', 'Digit9', 'Digit0', 'Minus', 'Equal', 'Backspace'],
-    ['Tab', 'KeyQ', 'KeyW', 'KeyE', 'KeyR', 'KeyT', 'KeyY', 'KeyU', 'KeyI', 'KeyO', 'KeyP', 'BracketLeft', 'BracketRight', 'Backslash'],
+    ['Tab', 'KeyQ', 'KeyW', 'KeyE', 'KeyR', 'KeyT', 'KeyY', 'KeyU', 'KeyI', 'KeyO', 'KeyP', 'BracketLeft', 'BracketRight', 'Backslash', 'Delete'],
     ['CapsLock', 'KeyA', 'KeyS', 'KeyD', 'KeyF', 'KeyG', 'KeyH', 'KeyJ', 'KeyK', 'KeyL', 'Semicolon', 'Quote', 'Enter'],
     ['ShiftLeft', 'KeyZ', 'KeyX', 'KeyC', 'KeyV', 'KeyB', 'KeyN', 'KeyM', 'Comma', 'Period', 'Slash', 'ArrowUp', 'ShiftRight'],
     ['ControlLeft', 'AltLeft', 'Space', 'AltRight', 'ControlRight', 'ArrowLeft', 'ArrowDown', 'ArrowRight', 'changeLang'],
@@ -159,7 +159,7 @@ class Keyboard {
     if (!element) return;
 
     /* КОСТЫЛЬ!!! */
-    const keyProgr = ['Backspace', 'Tab', 'CapsLock', 'Enter', 'ShiftLeft', 'ShiftRight', 'ControlLeft', 'ControlRight', 'AltLeft', 'Space', 'AltRight', 'changeLang'];
+    const keyProgr = ['Backspace', 'Tab', 'Delete', 'CapsLock', 'Enter', 'ShiftLeft', 'ShiftRight', 'ControlLeft', 'ControlRight', 'AltLeft', 'Space', 'AltRight', 'changeLang'];
     for (let i = 0; i < keyProgr.length; i += 1) {
       if (element.classList.contains(keyProgr[i])) return;
     }
@@ -176,8 +176,6 @@ class Keyboard {
     const textarea = document.querySelector('.textarea');
     textarea.focus();
     textarea.setRangeText(keyInner, textarea.selectionStart, textarea.selectionEnd, 'end');
-
-    localStorage.setItem('textareaValue', textarea.value);
   }
 
   onCapsLock(event) {
@@ -272,7 +270,7 @@ class Keyboard {
     textarea.setRangeText(' ', textarea.selectionStart, textarea.selectionEnd, 'end');
   }
 
-  static removeSymbolText() {
+  static onBackspace() {
     const textarea = document.querySelector('.textarea');
     textarea.focus();
 
@@ -287,8 +285,24 @@ class Keyboard {
     textarea.setRangeText('', textarea.selectionStart - 1, textarea.selectionEnd, 'end');
   }
 
+  static onDelete() {
+    const textarea = document.querySelector('.textarea');
+    textarea.focus();
+
+    const start = textarea.selectionStart;
+    const end = textarea.selectionEnd;
+
+    if (start !== end || (start === textarea.value.length && end === textarea.value.length)) {
+      textarea.setRangeText('', textarea.selectionStart, textarea.selectionEnd, 'end');
+      return;
+    }
+
+    textarea.setRangeText('', textarea.selectionStart, textarea.selectionEnd + 1, 'end');
+  }
+
   static addActiveClass(event) {
     const element = event.target.closest('.key') || document.querySelector(`.${event.code}`);
+
     if (!element) return;
 
     if (element.classList.contains('CapsLock')) return;
@@ -297,6 +311,7 @@ class Keyboard {
 
   removeActiveClass(event) {
     const element = document.querySelector(`.${event.code}`) || document.querySelector('.keyboard');
+    const textarea = document.querySelector('.textarea');
 
     if (!element) return;
     if (element.matches('.key')) {
@@ -317,6 +332,8 @@ class Keyboard {
     if (this.shift) {
       shift.classList.add('active');
     }
+
+    localStorage.setItem('textareaValue', textarea.value);
   }
 
   keydownKeyboard(event) {
@@ -325,7 +342,12 @@ class Keyboard {
     Keyboard.addActiveClass(event);
 
     if (key && key.classList.contains('Backspace')) {
-      Keyboard.removeSymbolText();
+      Keyboard.onBackspace();
+      return;
+    }
+
+    if (key && key.classList.contains('Delete')) {
+      Keyboard.onDelete();
       return;
     }
 
@@ -379,10 +401,12 @@ class Keyboard {
   }
 
   keyupKeyboard(event) {
+    const textarea = document.querySelector('.textarea');
     if (event.code === 'ShiftLeft') {
       this.offShift();
     }
     this.removeActiveClass(event);
+    localStorage.setItem('textareaValue', textarea.value);
   }
 
   // getPosCursor(event) {
@@ -443,13 +467,15 @@ const enter = document.querySelector('.Enter');
 const space = document.querySelector('.Space');
 const tab = document.querySelector('.Tab');
 const backspace = document.querySelector('.Backspace');
+const deleteKey = document.querySelector('.Delete');
 const capslock = document.querySelector('.CapsLock');
 const shift = document.querySelector('.ShiftLeft');
 
 enter.addEventListener('mousedown', Keyboard.addParagraph);
 space.addEventListener('mousedown', Keyboard.addSpace);
 tab.addEventListener('mousedown', Keyboard.addHorizontalIndent);
-backspace.addEventListener('mousedown', Keyboard.removeSymbolText);
+backspace.addEventListener('mousedown', Keyboard.onBackspace);
+deleteKey.addEventListener('mousedown', Keyboard.onDelete);
 capslock.addEventListener('click', keyboard.onCapsLock.bind(keyboard));
 shift.addEventListener('mousedown', keyboard.onShift.bind(keyboard));
 shift.addEventListener('mouseup', keyboard.offShift.bind(keyboard));
