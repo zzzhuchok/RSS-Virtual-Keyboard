@@ -4,49 +4,49 @@ const keysData = {
     ['Tab', 'q', 'w', 'e', 'r', 't', 'y', 'u', 'i', 'o', 'p', '[', ']', '\\', 'Del'],
     ['CapsLock', 'a', 's', 'd', 'f', 'g', 'h', 'j', 'k', 'l', ';', '\'', 'Enter'],
     ['Shift', 'z', 'x', 'c', 'v', 'b', 'n', 'm', ',', '.', '/', '▲', 'Shift'],
-    ['Ctrl', 'Alt', 'Space', 'Alt', 'Ctr', '◄', '▼', '►', 'Lang'],
+    ['Ctrl', 'Win', 'Alt', 'Space', 'Alt', 'Ctr', '◄', '▼', '►', 'Lang'],
   ],
   keyEnUp: [
     ['~', '!', '@', '#', '$', '%', '^', '&', '*', '(', ')', '_', '+', 'Backspace'],
     ['Tab', 'Q', 'W', 'E', 'R', 'T', 'Y', 'U', 'I', 'O', 'P', '{', '}', '|', 'Del'],
     ['CapsLock', 'A', 'S', 'D', 'F', 'G', 'H', 'J', 'K', 'L', ':', '"', 'Enter'],
     ['Shift', 'Z', 'X', 'C', 'V', 'B', 'N', 'M', '<', '>', '?', '▲', 'Shift'],
-    ['Ctrl', 'Alt', 'Space', 'Alt', 'Ctr', '◄', '▼', '►', 'Lang'],
+    ['Ctrl', 'Win', 'Alt', 'Space', 'Alt', 'Ctr', '◄', '▼', '►', 'Lang'],
   ],
   keyEnCaps: [
     ['`', '1', '2', '3', '4', '5', '6', '7', '8', '9', '0', '-', '=', 'Backspace'],
     ['Tab', 'Q', 'W', 'E', 'R', 'T', 'Y', 'U', 'I', 'O', 'P', '[', ']', '\\', 'Del'],
     ['CapsLock', 'A', 'S', 'D', 'F', 'G', 'H', 'J', 'K', 'L', ';', '\'', 'Enter'],
     ['Shift', 'Z', 'X', 'C', 'V', 'B', 'N', 'M', ',', '.', '/', '▲', 'Shift'],
-    ['Ctrl', 'Alt', 'Space', 'Alt', 'Ctr', '◄', '▼', '►', 'Lang'],
+    ['Ctrl', 'Win', 'Alt', 'Space', 'Alt', 'Ctr', '◄', '▼', '►', 'Lang'],
   ],
   keyRu: [
     ['ё', '1', '2', '3', '4', '5', '6', '7', '8', '9', '0', '-', '=', 'Backspace'],
     ['Tab', 'й', 'ц', 'у', 'к', 'е', 'н', 'г', 'ш', 'щ', 'з', 'х', 'ъ', '\\', 'Del'],
     ['CapsLock', 'ф', 'ы', 'в', 'а', 'п', 'р', 'о', 'л', 'д', 'ж', 'э', 'Enter'],
     ['Shift', 'я', 'ч', 'с', 'м', 'и', 'т', 'ь', 'б', 'ю', '.', '▲', 'Shift'],
-    ['Ctrl', 'Alt', 'Space', 'Alt', 'Ctr', '◄', '▼', '►', 'Lang'],
+    ['Ctrl', 'Win', 'Alt', 'Space', 'Alt', 'Ctr', '◄', '▼', '►', 'Lang'],
   ],
   keyRuUp: [
     ['Ё', '!', '"', '№', ';', '%', ':', '?', '*', '(', ')', '_', '+', 'Backspace'],
     ['Tab', 'Й', 'Ц', 'У', 'К', 'Е', 'Н', 'Г', 'Ш', 'Щ', 'З', 'Х', 'Ъ', '\\', 'Del'],
     ['CapsLock', 'Ф', 'Ы', 'В', 'А', 'П', 'Р', 'О', 'Л', 'Д', 'Ж', 'Э', 'Enter'],
     ['Shift', 'Я', 'Ч', 'С', 'М', 'И', 'Т', 'Ь', 'Б', 'Ю', ',', '▲', 'Shift'],
-    ['Ctrl', 'Alt', 'Space', 'Alt', 'Ctr', '◄', '▼', '►', 'Lang'],
+    ['Ctrl', 'Win', 'Alt', 'Space', 'Alt', 'Ctr', '◄', '▼', '►', 'Lang'],
   ],
   keyRuCaps: [
     ['Ё', '1', '2', '3', '4', '5', '6', '7', '8', '9', '0', '-', '=', 'Backspace'],
     ['Tab', 'Й', 'Ц', 'У', 'К', 'Е', 'Н', 'Г', 'Ш', 'Щ', 'З', 'Х', 'Ъ', '\\', 'Del'],
     ['CapsLock', 'Ф', 'Ы', 'В', 'А', 'П', 'Р', 'О', 'Л', 'Д', 'Ж', 'Э', 'Enter'],
     ['Shift', 'Я', 'Ч', 'С', 'М', 'И', 'Т', 'Ь', 'Б', 'Ю', '.', '▲', 'Shift'],
-    ['Ctrl', 'Alt', 'Space', 'Alt', 'Ctr', '◄', '▼', '►', 'Lang'],
+    ['Ctrl', 'Win', 'Alt', 'Space', 'Alt', 'Ctr', '◄', '▼', '►', 'Lang'],
   ],
   keyCodes: [
     ['Backquote', 'Digit1', 'Digit2', 'Digit3', 'Digit4', 'Digit5', 'Digit6', 'Digit7', 'Digit8', 'Digit9', 'Digit0', 'Minus', 'Equal', 'Backspace'],
     ['Tab', 'KeyQ', 'KeyW', 'KeyE', 'KeyR', 'KeyT', 'KeyY', 'KeyU', 'KeyI', 'KeyO', 'KeyP', 'BracketLeft', 'BracketRight', 'Backslash', 'Delete'],
     ['CapsLock', 'KeyA', 'KeyS', 'KeyD', 'KeyF', 'KeyG', 'KeyH', 'KeyJ', 'KeyK', 'KeyL', 'Semicolon', 'Quote', 'Enter'],
     ['ShiftLeft', 'KeyZ', 'KeyX', 'KeyC', 'KeyV', 'KeyB', 'KeyN', 'KeyM', 'Comma', 'Period', 'Slash', 'ArrowUp', 'ShiftRight'],
-    ['ControlLeft', 'AltLeft', 'Space', 'AltRight', 'ControlRight', 'ArrowLeft', 'ArrowDown', 'ArrowRight', 'changeLang'],
+    ['ControlLeft', 'MetaLeft', 'AltLeft', 'Space', 'AltRight', 'ControlRight', 'ArrowLeft', 'ArrowDown', 'ArrowRight', 'changeLang'],
   ],
 };
 
@@ -159,7 +159,7 @@ class Keyboard {
     if (!element) return;
 
     /* КОСТЫЛЬ!!! */
-    const keyProgr = ['Backspace', 'Tab', 'Delete', 'CapsLock', 'Enter', 'ShiftLeft', 'ShiftRight', 'ControlLeft', 'ControlRight', 'AltLeft', 'Space', 'AltRight', 'changeLang'];
+    const keyProgr = ['Backspace', 'Tab', 'Delete', 'CapsLock', 'Enter', 'ShiftLeft', 'ShiftRight', 'ControlLeft', 'MetaLeft', 'ControlRight', 'AltLeft', 'Space', 'AltRight', 'changeLang'];
     for (let i = 0; i < keyProgr.length; i += 1) {
       if (element.classList.contains(keyProgr[i])) return;
     }
