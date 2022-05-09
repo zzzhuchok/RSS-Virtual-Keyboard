@@ -7,8 +7,6 @@
     box-sizing: border-box;
 }
 
-/* ------------------------------------------------------------------- */
-
 .container {
     max-width: 1000px;
     margin: 0 auto;
@@ -170,6 +168,7 @@
 .key.active {
     background: rgba(30, 134, 70, 0.6);
     border-color: #999;
+    transform: scale(0.9);
 }
 
 .Backspace,
