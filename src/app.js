@@ -411,23 +411,10 @@ class Keyboard {
     localStorage.setItem('textareaValue', textarea.value);
   }
 
-  // getPosCursor(event) {
-  //   const el = event.currentTarget;
-  //   this.posTextareaStart = el.selectionStart;
-  //   this.posTextareaEnd = el.selectionEnd;
-  // }
-
-  // static onFocus() {
-  //   const textarea = document.querySelector('.textarea');
-  //   textarea.focus();
-  //   // console.dir(textarea.selectionStart);
-  // }
-
-  // getPosCursor() {
-  //   const textarea = document.querySelector('.textarea');
-  //   this.posCursor = textarea.selectionStart;
-  //   // console.log(this.posCursor);
-  // }
+  static onFocus() {
+    const textarea = document.querySelector('.textarea');
+    textarea.focus();
+  }
 }
 
 /* ------------------------------------------------------------------------- */
@@ -441,6 +428,7 @@ const { body } = document;
 const container = getElement('div', 'container');
 const title = getElement('h1', 'title title-h1', titleHeader);
 const textarea = getElement('textarea', 'textarea', '');
+textarea.setAttribute('autofocus', '');
 textarea.value = localStorage.getItem('textareaValue');
 
 body.prepend(container);
@@ -485,18 +473,10 @@ shiftLeft.addEventListener('mouseup', keyboard.offShift.bind(keyboard));
 ShiftRight.addEventListener('mousedown', keyboard.onShift.bind(keyboard));
 ShiftRight.addEventListener('mouseup', keyboard.offShift.bind(keyboard));
 
-// textarea.addEventListener('blur', Keyboard.onFocus);
+textarea.addEventListener('blur', Keyboard.onFocus);
 // textarea.addEventListener('click', keyboard.getPosCursor);
 // keyboard.main.addEventListener('click', Keyboard.onFocus);
 
 /* События клавиатуры */
 document.addEventListener('keydown', keyboard.keydownKeyboard.bind(keyboard));
 document.addEventListener('keyup', keyboard.keyupKeyboard.bind(keyboard));
-
-// textarea.addEventListener('click', focusText);
-
-// function focusText(event) {
-//   const element = event.currentTarget;
-//   element.setRangeText('testString', element.selectionStart, element.selectionEnd, 'end');
-//   // console.log(element.selectionStart, element.selectionEnd);
-// }
