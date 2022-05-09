@@ -321,7 +321,8 @@ class Keyboard {
     }
 
     const elementsActive = element.querySelectorAll('.key.active');
-    const shift = element.querySelector('.ShiftLeft');
+    const shiftLeft = element.querySelector('.ShiftLeft');
+    const shiftRight = element.querySelector('.ShiftRight');
 
     for (let i = 0; i < elementsActive.length; i += 1) {
       if (!elementsActive[i].classList.contains('CapsLock')) {
@@ -330,7 +331,8 @@ class Keyboard {
     }
 
     if (this.shift) {
-      shift.classList.add('active');
+      shiftLeft.classList.add('active');
+      shiftRight.classList.add('active');
     }
 
     localStorage.setItem('textareaValue', textarea.value);
@@ -370,7 +372,7 @@ class Keyboard {
       return;
     }
 
-    if (key && key.classList.contains('ShiftLeft')) {
+    if (key && (key.classList.contains('ShiftLeft') || key.classList.contains('ShiftRight'))) {
       if (event.repeat) {
         return;
       }
@@ -402,7 +404,7 @@ class Keyboard {
 
   keyupKeyboard(event) {
     const textarea = document.querySelector('.textarea');
-    if (event.code === 'ShiftLeft') {
+    if (event.code === 'ShiftLeft' || event.code === 'ShiftRight') {
       this.offShift();
     }
     this.removeActiveClass(event);
@@ -469,7 +471,8 @@ const tab = document.querySelector('.Tab');
 const backspace = document.querySelector('.Backspace');
 const deleteKey = document.querySelector('.Delete');
 const capslock = document.querySelector('.CapsLock');
-const shift = document.querySelector('.ShiftLeft');
+const shiftLeft = document.querySelector('.ShiftLeft');
+const ShiftRight = document.querySelector('.ShiftRight');
 
 enter.addEventListener('mousedown', Keyboard.addParagraph);
 space.addEventListener('mousedown', Keyboard.addSpace);
@@ -477,8 +480,10 @@ tab.addEventListener('mousedown', Keyboard.addHorizontalIndent);
 backspace.addEventListener('mousedown', Keyboard.onBackspace);
 deleteKey.addEventListener('mousedown', Keyboard.onDelete);
 capslock.addEventListener('click', keyboard.onCapsLock.bind(keyboard));
-shift.addEventListener('mousedown', keyboard.onShift.bind(keyboard));
-shift.addEventListener('mouseup', keyboard.offShift.bind(keyboard));
+shiftLeft.addEventListener('mousedown', keyboard.onShift.bind(keyboard));
+shiftLeft.addEventListener('mouseup', keyboard.offShift.bind(keyboard));
+ShiftRight.addEventListener('mousedown', keyboard.onShift.bind(keyboard));
+ShiftRight.addEventListener('mouseup', keyboard.offShift.bind(keyboard));
 
 // textarea.addEventListener('blur', Keyboard.onFocus);
 // textarea.addEventListener('click', keyboard.getPosCursor);
