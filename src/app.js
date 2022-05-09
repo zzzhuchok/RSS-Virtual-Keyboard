@@ -57,8 +57,6 @@ function getElement(tag, classSel, inner = '') {
   return el;
 }
 
-/* ---------------------------------------------------------------------------------------------- */
-
 class Keyboard {
   constructor() {
     this.main = null;
@@ -154,15 +152,16 @@ class Keyboard {
 
   addLetterToTextarea(event) {
     const element = event.target.closest('.key') || document.querySelector(`.${event.code}`);
+    const { lang } = this;
+
     if (!element) return;
 
-    /* КОСТЫЛЬ!!! */
     const keyProgr = ['Backspace', 'Tab', 'Delete', 'CapsLock', 'Enter', 'ShiftLeft', 'ShiftRight', 'ControlLeft', 'MetaLeft', 'ControlRight', 'AltLeft', 'Space', 'AltRight', 'changeLang'];
     for (let i = 0; i < keyProgr.length; i += 1) {
       if (element.classList.contains(keyProgr[i])) return;
     }
 
-    const keyCollection = element.querySelector(`.${this.lang}`).children;
+    const keyCollection = element.querySelector(`.${lang}`).children;
 
     let keyInner = '';
     for (let i = 0; i < keyCollection.length; i += 1) {
@@ -415,8 +414,6 @@ class Keyboard {
   }
 }
 
-/* ------------------------------------------------------------------------- */
-
 const titleHeader = 'RSS Virtual Keyboard';
 const descriptionOS = 'OS:  <span>Windows</span>';
 const descriptionOSKey = 'Change the language:  <span>ctrlLeft + altLeft</span>';
@@ -439,15 +436,13 @@ descriptionBlock.append(getElement('p', 'description__OS', descriptionOS));
 descriptionBlock.append(getElement('p', 'description__hot-key', descriptionOSKey));
 
 const keyboard = new Keyboard();
-keyboard.lang = localStorage.getItem('lang');
+keyboard.lang = localStorage.getItem('lang') || keyboard.lang;
 keyboard.init();
 keyboard.initKeys();
 
-/* Клавиша изм языка */
 const changeLang = document.querySelector('.changeLang');
 changeLang.addEventListener('click', keyboard.toggleLang.bind(keyboard));
 
-/* Добавление буквы в textarea */
 keyboard.main.addEventListener('mousedown', Keyboard.addActiveClass);
 keyboard.main.addEventListener('mouseup', keyboard.removeActiveClass.bind(keyboard));
 
@@ -474,9 +469,6 @@ ShiftRight.addEventListener('mousedown', keyboard.onShift.bind(keyboard));
 ShiftRight.addEventListener('mouseup', keyboard.offShift.bind(keyboard));
 
 textarea.addEventListener('blur', Keyboard.onFocus);
-// textarea.addEventListener('click', keyboard.getPosCursor);
-// keyboard.main.addEventListener('click', Keyboard.onFocus);
 
-/* События клавиатуры */
 document.addEventListener('keydown', keyboard.keydownKeyboard.bind(keyboard));
 document.addEventListener('keyup', keyboard.keyupKeyboard.bind(keyboard));
