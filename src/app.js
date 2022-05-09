@@ -153,9 +153,7 @@ class Keyboard {
   }
 
   addLetterToTextarea(event) {
-    const { lang } = this;
     const element = event.target.closest('.key') || document.querySelector(`.${event.code}`);
-
     if (!element) return;
 
     /* КОСТЫЛЬ!!! */
@@ -164,7 +162,7 @@ class Keyboard {
       if (element.classList.contains(keyProgr[i])) return;
     }
 
-    const keyCollection = element.querySelector(`.${lang}`).children;
+    const keyCollection = element.querySelector(`.${this.lang}`).children;
 
     let keyInner = '';
     for (let i = 0; i < keyCollection.length; i += 1) {
@@ -420,28 +418,30 @@ class Keyboard {
 /* ------------------------------------------------------------------------- */
 
 const titleHeader = 'RSS Virtual Keyboard';
-const descriptionOS = 'Windows';
-const descriptionOSKey = 'ctrl + alt';
+const descriptionOS = 'OS:  <span>Windows</span>';
+const descriptionOSKey = 'Change the language:  <span>ctrlLeft + altLeft</span>';
 
 const { body } = document;
 
 const container = getElement('div', 'container');
 const title = getElement('h1', 'title title-h1', titleHeader);
 const textarea = getElement('textarea', 'textarea', '');
+const descriptionBlock = getElement('div', 'description');
 textarea.setAttribute('autofocus', '');
 textarea.value = localStorage.getItem('textareaValue');
 
 body.prepend(container);
 container.append(title);
 container.append(textarea);
+container.append(descriptionBlock);
+
+descriptionBlock.append(getElement('p', 'description__OS', descriptionOS));
+descriptionBlock.append(getElement('p', 'description__hot-key', descriptionOSKey));
 
 const keyboard = new Keyboard();
 keyboard.lang = localStorage.getItem('lang');
 keyboard.init();
 keyboard.initKeys();
-
-container.append(getElement('p', 'description', descriptionOS));
-container.append(getElement('p', 'description', descriptionOSKey));
 
 /* Клавиша изм языка */
 const changeLang = document.querySelector('.changeLang');
